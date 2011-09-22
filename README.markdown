@@ -11,6 +11,9 @@ The method 'graph' declares a route for a graph. Define the title on the first m
 
 Inside the block you can call the following methods: all_smiles, area, bar, line and pie. Pass a title and an array (hash if using a pie) as parameters.
 
+    require 'sinatra'
+    require 'sinatra/graph'
+
     graph "Our Business", :prefix => '/graphs' do
       area "Buys", [1,5,2,3,4]
       bar "Sales", [5,2,6,2,1]

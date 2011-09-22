@@ -1,3 +1,5 @@
+require 'scruffy'
+
 module Sinatra
   # Sinatra::Graph is an extension that wraps Scruffy into Sinatra for maximum DSL goodness!
   module Graph
