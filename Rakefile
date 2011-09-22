@@ -9,7 +9,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = "Wraps Scruffy in Sinatra's DSL."
   gem.description = "Wraps Scruffy in Sinatra's DSL."
   gem.email = "shferreira@me.com"
-  gem.homepage = "http://github.com/shf/sinatra-cell"
+  gem.homepage = "http://github.com/shf/sinatra-graph"
   gem.authors = [ "Silvio Henrique Ferreira" ]
   gem.add_dependency "sinatra", ">= 1.0.0"
   gem.add_dependency "scruffy"
