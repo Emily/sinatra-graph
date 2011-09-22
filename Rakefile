@@ -5,7 +5,7 @@ require 'jeweler'
 
 Jeweler::Tasks.new do |gem|
   gem.name = "sinatra-graph"
-  gem.version = "0.1.0"
+  gem.version = "0.1.1"
   gem.summary = "Wraps Scruffy in Sinatra's DSL."
   gem.description = "Wraps Scruffy in Sinatra's DSL."
   gem.email = "shferreira@me.com"
