@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'rake'
-require 'rspec'
+#require 'rspec'
 require 'rspec/autorun'
 require 'rspec/core/rake_task'
 require 'rcov'
