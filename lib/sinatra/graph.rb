@@ -36,7 +36,7 @@ module Sinatra
 
         instance_eval(&block)
         graph.title = title
-        graph.renderer = options[:type] == 'pie' ? Scruffy::Renderers::Pie.new : Scruffy::Renderers::Standard.new
+        graph.renderer = options[:type].to_s == 'pie' ? Scruffy::Renderers::Pie.new : Scruffy::Renderers::Standard.new
         graph.render.gsub(/viewBox\=\"([0-9]+)\s100\s([0-9]+)\s200\"/, 'viewBox="0 0 \1 \2"')
       end
     end
