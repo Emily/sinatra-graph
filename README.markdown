@@ -11,6 +11,8 @@ The method 'graph' declares a route for a graph. Define the title on the first m
 
 Inside the block you can call the following methods: all_smiles, area, bar, line and pie. Pass a title and an array (hash if using a pie) as parameters.
 
+Obviously, you can also access params[] and all other Sinatra methods.
+
     require 'sinatra'
     require 'sinatra/graph'
 
@@ -21,8 +23,17 @@ Inside the block you can call the following methods: all_smiles, area, bar, line
 
 This graph will be served on /graphs/our_business.svg
 
+## Pie Charts
+
+Pie charts are a special case: they require a hash instead of a list, and they don't need the grid on the background. To make a pie chart, just use the :type => 'pie' option:
+
+    require 'sinatra'
+    require 'sinatra/graph'
+
+    graph "Market Share", :type => 'pie' do
+      pie "Share", { "Product one" => 100, "Product Two" => 300 }
+    end
+
 ## Problems
 
 There is a well known 'bug' in Scruffy that renders SVGs incorrectly in most browsers. We handle this by changing the generated XML instead of monkey-patching or altering the gem.
-
-Because of the syntax sugar, Sinatra::Graph probaby isn't thread safe. If you know how to help me with instance_eval please drop a line!
