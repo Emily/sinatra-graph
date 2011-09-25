@@ -1,7 +1,6 @@
-require 'rubygems'
+require 'rspec'
 require 'rack/test'
 require 'sinatra'
-require 'scruffy'
 require 'sinatra/graph'
 
 graph "Our Business", :prefix => '/graphs' do
