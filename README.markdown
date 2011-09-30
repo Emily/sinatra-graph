@@ -34,6 +34,16 @@ Pie charts are a special case: they require a hash instead of a list, and they d
       pie "Share", { "Product one" => 100, "Product Two" => 300 }
     end
 
+## Modular Style
+
+To use this gem on Modular Style apps, you just need to register it:
+
+    class MyApp < Sinatra::Base
+      register Sinatra::Graph
+
+      ...
+    end
+
 ## Problems
 
 There is a well known 'bug' in Scruffy that renders SVGs incorrectly in most browsers. We handle this by changing the generated XML instead of monkey-patching or altering the gem.
