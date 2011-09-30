@@ -16,6 +16,9 @@ describe "sinatra-graph" do
   end
 
   it 'renders the cell as expected, keeping the scope' do
+    app.set :show_exceptions, false
+    app.set :raise_errors, true
+    
     get '/graphs/our_business.svg'
     last_response.body.include?('<g id="scruffy_graph">').should == true
   end
