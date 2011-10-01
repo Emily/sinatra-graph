@@ -1,9 +1,19 @@
 Sinatra::Graph
 ==============
 
-Sinatra::Graph is an extension that wraps Scruffy into Sinatra for maximum DSL goodness!
+Sinatra::Graph is an extension that wraps Scruffy, an SVG charting gem, into Sinatra, for maximum DSL goodness. It's a very simple extension and the code fits on a page. It's nice when you need a something done in ten minutes that shows statistics.
 
-Based on https://github.com/matth/chart-topper/
+Based on https://github.com/matth/chart-topper/ , which does the same thing for Gruff.
+
+## Installation
+
+To install this gem, just use the gem command:
+
+    gem install sinatra-graph
+
+To use it in your project, just require it:
+
+    require 'sinatra/graph'
 
 ## Creating a Graph
 
@@ -11,7 +21,7 @@ The method 'graph' declares a route for a graph. Define the title on the first m
 
 Inside the block you can call the following methods: all_smiles, area, bar, line and pie. Pass a title and an array (hash if using a pie) as parameters.
 
-Obviously, you can also access params[] and all other Sinatra methods.
+Obviously, you can also access params[] and all other Sinatra methods, or other gem methods, so you can easily authorization and other stuff. They also respond to before/after blocks and such, since it's just a "get" block underneath it all.
 
     require 'sinatra'
     require 'sinatra/graph'
