@@ -15,5 +15,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sinatra"
   
   s.files         = ["lib/sinatra/graph.rb"]
+  s.test_files    = []
   s.require_paths = ["lib"]  
 end
