@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
   
 Gem::Specification.new do |s|  
   s.name        = "sinatra-graph"  
-  s.version     = "0.1.6" 
+  s.version     = "0.1.7" 
   s.platform    = Gem::Platform::RUBY  
   s.authors     = ["smf"]  
   s.email       = [""]  
@@ -11,8 +11,8 @@ Gem::Specification.new do |s|
   s.summary     = %q{Sinatra Graph Library}  
   s.description = %q{Scruffy for Sinatra}  
   
-  s.add_development_dependency "scruffy"
-  s.add_development_dependency "sinatra"
+  s.add_dependency "scruffy"
+  s.add_dependency "sinatra"
   
   s.files         = ["lib/sinatra/graph.rb"]
   s.test_files    = []
