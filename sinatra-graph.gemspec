@@ -5,11 +5,11 @@ Gem::Specification.new do |s|
   s.name        = "sinatra-graph"  
   s.version     = "0.1.3" 
   s.platform    = Gem::Platform::RUBY  
-  s.authors     = ["TODO: Write your name"]  
-  s.email       = ["TODO: Write your email address"]  
+  s.authors     = ["smf"]  
+  s.email       = [""]  
   s.homepage    = ""  
-  s.summary     = %q{TODO: Write a gem summary}  
-  s.description = %q{TODO: Write a gem description}  
+  s.summary     = %q{Sinatra Graph Library}  
+  s.description = %q{Scruffy for Sinatra}  
   
   s.add_development_dependency "scruffy"
   s.add_development_dependency "sinatra"
