@@ -35,7 +35,7 @@ module Sinatra
         instance_eval(&block)
         graph.title = title
 
-        graph.value_formatter = format(options[:format], options[:precision])
+        graph.value_formatter = format(options[:format] || "", options[:precision])
 
         if options[:type].to_s == 'pie'
           graph.renderer = renderer(options[:type])
