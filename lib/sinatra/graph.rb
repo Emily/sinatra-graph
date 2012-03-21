@@ -42,7 +42,7 @@ module Sinatra
         else
           Scruffy::Renderers::Standard.new
         end
-        graph.render(:min_value => options[:min_value]).gsub(/viewBox\=\"([0-9]+)\s100\s([0-9]+)\s200\"/, 'viewBox="0 0 \1 \2"')
+        graph.render.gsub(/viewBox\=\"([0-9]+)\s100\s([0-9]+)\s200\"/, 'viewBox="0 0 \1 \2"')
       end
     end
 
