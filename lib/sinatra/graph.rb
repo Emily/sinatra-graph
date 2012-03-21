@@ -52,15 +52,18 @@ module Sinatra
 
     def format(option, precision = 0)
       case option
-        when 'currency': Scruffy::Formatters::Currency.new(:precision => precision || 0)
-        when 'percentage': Scruffy::Formatters::Currency.new(:precision => precision || 0)
+        when 'currency'
+          Scruffy::Formatters::Currency.new(:precision => precision || 0)
+        when 'percentage'
+          Scruffy::Formatters::Currency.new(:precision => precision || 0)
         else Scruffy::Formatters::Number.new(:precision => precision || 0)
       end
     end
 
     def renderer(option)
       case option
-        when 'pie': Scruffy::Renderers::Pie.new
+        when 'pie'
+          Scruffy::Renderers::Pie.new
         else Scruffy::Renderers::Standard.new
       end
     end
