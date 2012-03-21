@@ -1,5 +1,3 @@
-require 'scruffy'
-
 module Sinatra
   # Sinatra::Graph is an extension that wraps Scruffy into Sinatra for maximum DSL goodness!
   module Graph
@@ -18,12 +16,14 @@ module Sinatra
     # This graph will be served on /graphs/our_business.svg
     def graph(title, options = {}, &block)
       prefix = options[:prefix]
-      get "#{prefix}/#{filename(title)}.svg" do
+      filename = title.gsub(/[^a-zA-Z0-9_\s]/, '').gsub(/\s/, '_').downcase
+
+      get "#{prefix}/#{filename}.svg" do
         content_type "image/svg+xml"
 
         graph = Scruffy::Graph.new
-
         @graph = graph
+
         GRAPH_TYPES.each do |type|
           instance_eval <<-EVAL
             def #{type}(title, values, options = {}, &block)
@@ -34,37 +34,13 @@ module Sinatra
 
         instance_eval(&block)
         graph.title = title
-
-        graph.value_formatter = format(options[:format], options[:precision])
-
-        if options[:type].to_s == 'pie'
-          graph.renderer = renderer(options[:type])
+        graph.renderer = options[:type].to_s == 'pie' ? Scruffy::Renderers::Pie.new : Scruffy::Renderers::Standard.new
+        
+        if options[:min_value]
+          graph.render(:min_value => options[:min_value]).gsub(/viewBox\=\"([0-9]+)\s100\s([0-9]+)\s200\"/, 'viewBox="0 0 \1 \2"')
         else
-          Scruffy::Renderers::Standard.new
+          graph.render.gsub(/viewBox\=\"([0-9]+)\s100\s([0-9]+)\s200\"/, 'viewBox="0 0 \1 \2"')
         end
-        graph.render.gsub(/viewBox\=\"([0-9]+)\s100\s([0-9]+)\s200\"/, 'viewBox="0 0 \1 \2"')
-      end
-    end
-
-    def filename(title)
-      title.gsub(/[^a-zA-Z0-9_\s]/, '').gsub(/\s/, '_').downcase
-    end
-
-    def format(option, precision = 0)
-      case option
-        when 'currency'
-          Scruffy::Formatters::Currency.new(:precision => precision || 0)
-        when 'percentage'
-          Scruffy::Formatters::Currency.new(:precision => precision || 0)
-        else Scruffy::Formatters::Number.new(:precision => precision || 0)
-      end
-    end
-
-    def renderer(option)
-      case option
-        when 'pie'
-          Scruffy::Renderers::Pie.new
-        else Scruffy::Renderers::Standard.new
       end
     end
   end
