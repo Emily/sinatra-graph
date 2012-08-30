@@ -19,6 +19,7 @@ module Sinatra
     def graph(title, options = {}, &block)
       prefix = options[:prefix]
       filename = title.gsub(/[^a-zA-Z0-9_\s]/, '').gsub(/\s/, '_').downcase
+      @title = title
 
       get "#{prefix}/#{filename}.svg" do
         content_type "image/svg+xml"
@@ -35,7 +36,7 @@ module Sinatra
         end
 
         instance_eval(&block)
-        graph.title = title
+        graph.title = @title
         graph.renderer = options[:type].to_s == 'pie' ? Scruffy::Renderers::Pie.new : Scruffy::Renderers::Standard.new
         
         if options[:min_value]
