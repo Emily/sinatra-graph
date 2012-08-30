@@ -19,13 +19,13 @@ module Sinatra
     def graph(title, options = {}, &block)
       prefix = options[:prefix]
       filename = title.gsub(/[^a-zA-Z0-9_\s]/, '').gsub(/\s/, '_').downcase
-      @title = title
 
       get "#{prefix}/#{filename}.svg" do
         content_type "image/svg+xml"
 
         graph = Scruffy::Graph.new
         @graph = graph
+        @title = title
 
         GRAPH_TYPES.each do |type|
           instance_eval <<-EVAL
